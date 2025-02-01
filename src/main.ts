@@ -8,15 +8,16 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { ClassSerializerInterceptor } from '@nestjs/common';
 
 async function bootstrap() {
+  
   initializeTransactionalContext({ storageDriver: StorageDriver.AUTO });
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.setGlobalPrefix('api/');
+  app.setGlobalPrefix('api');
 
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   app.enableCors();
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();

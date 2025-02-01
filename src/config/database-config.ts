@@ -13,7 +13,7 @@ export const DatabaseConfig = TypeOrmModule.forRootAsync({
     entities: ['dist/**/*.entity{.ts,.js}'],
     migrations: ['dist/src/database/migrations/*{.ts,.js}'],
     logging: process.env.APP_ENV === 'local',
-    synchronize: false,
+    synchronize: true,
     migrationsRun: true,
     migrationsTransactionMode: 'all',
     useUTC: true,
